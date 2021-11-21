@@ -9,6 +9,10 @@
 Global Styles
 ========================================================================== */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .group:after {
   content: "";
   display: table;
@@ -100,6 +104,12 @@ section {
   padding: 0 10px;
   max-width: 75ch;
   margin: 0 auto;
+
+  &.full-width {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 dl {
@@ -146,6 +156,10 @@ dd {
 dt, dd {
   border-bottom: 2px solid black;
 
+  &:last-of-type {
+    border-bottom: none;
+  }
+
   @media screen and (max-width: 868px) {
     border-bottom: none;
   }
@@ -157,6 +171,7 @@ Header
 
 header {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,229 +200,33 @@ nav ol {
 }
 
 /* ==========================================================================
-Intro
+Accomodations
 ========================================================================== */
-.intro span.icon {
-  font-size: 40px;
-  color: $accent-color;
-  font-weight: bold;
-}
-.intro-icon {
-  display: inline-block;
-  vertical-align: top;
-  padding: 6px 0 0 0;
-  margin-right: 20px;
-  width: 40px;
-}
-.intro-content {
-  display: inline-block;
-  width: 80%;
-}
 
-#intro {
-  padding-top: 40px;
-  img {
-    width: 100%;
-    height: auto;
+#accomodations {
+  ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: min(3vw, 30px);
+
+    @media screen and (max-width: 675px) {
+      grid-template-columns: auto;
+    }
   }
-}
-#intro p {
-  text-align: center;
-}
 
-/* ==========================================================================
-Features-stack
-========================================================================== */
-.features {
-  position: relative;
+  li {
+    border: 1px solid green;
+  }
 
   p {
-    margin-bottom: 0;
-    padding-bottom: 0;
+    padding: 0;
   }
-  h3 {
-    margin: 0 0 20px 0;
-  }
-  span.icon {
-    font-size: 35px;
-    color: $accent-color;
-    font-weight: bold;
-  }
-  .feature-icon {
-    display: inline-block;
-    vertical-align: top;
-    padding: 6px 0 0 0;
-    margin-right: 20px;
-    width: 35px;
-  }
-  .feature-content {
-    display: inline-block;
-    width: 75%;
-  }
-  .intro-icon {
-    display: inline-block;
-    vertical-align: top;
-    padding: 6px 0 0 0;
-    margin-right: 20px;
-  }
-  .intro-content {
-    display: inline-block;
-    width: 80%;
-  }
-  ul.features-stack {
-    margin-top: 50px;
-  }
-  ul.features-stack li {
-    margin-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: solid 1px $keyline-color;
-  }
-  ul.features-stack li:last-child {
-    padding-bottom: 0px;
-    border-bottom: none;
-  }
-  .ipad-wrap {
-    width: 706px;
-    height: 1002px;
-    background: url("../img/ipad-device.png") no-repeat center center;
-    z-index: 1;
-  }
-  .iphone-wrap {
-    width: 304px;
-    height: 620px;
-    background: url("../img/iphone6.png") no-repeat center center;
-    position: absolute;
-    left: 530px;
-    bottom: 129px;
-    z-index: 2;
-  }
-  .device-showcase {
-    position: absolute;
-    bottom: -365px;
-    right: 61%;
-  }
-}
-.features .responsive-feature-img, .features-extra .responsive-feature-img {
-  display: none;
-}
-.devices {
-  position: relative;
-}
-
-/* ==========================================================================
-.features-extra
-========================================================================== */
-.features-extra {
-  position: relative;
-  z-index: 3;
-
-  .btn {
-    margin-top: 20px;
-  }
-  .macbook-wrap {
-    position: absolute;
-    width: 916px;
-    height: 540px;
-    background: url("../img/macbook-pro.png") no-repeat center center;
-    top: 114px;
-    z-index: 4;
-    left: 50%;
-  }
-}
-
-/* ==========================================================================
-.events
-========================================================================== */
-.events {
-  .leftcol {
-    padding-right: 100px;
-    border-right: solid 1px $keyline-color;
-  }
-  .rightcol {
-    padding-left: 100px;
-  }
-
-  .time {
-    font-size: 13px;
-    font-style: italic;
-    text-transform: lowercase;
-    color: black;
-  }
-}
-
-/* ==========================================================================
-.blog
-========================================================================== */
-.blog {
-  padding-bottom: 120px;
 
   img {
-    width: 100%;
-    height: auto;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
-  }
-  h2 {
-    font-size: $blog-post-title;
-    color: $txt-accent;
-    font-weight: $semibold;
-    text-transform: uppercase;
-    margin-top: 35px;
-  }
-  .btn {
-    margin-top: 20px;
-  }
-  .blog-img-wrap {
-    position: relative;
-    overflow: hidden;
-
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba($white-color, 0.5);
-      -moz-transition: all 300ms ease-in-out;
-      -o-transition: all 300ms ease-in-out;
-      -webkit-transition: all 300ms ease-in-out;
-      transition: all 300ms ease-in-out;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-      opacity: 0;
-    }
-    i {
-      color: $white-color;
-      font-size: 20px;
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 25px;
-      right: 35px;
-    }
-  }
-  .blog-img-wrap:hover img, .blog-img-wrap:focus img {
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  .blog-img-wrap:hover .overlay, .blog-img-wrap:focus .overlay {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
-    filter: alpha(opacity=1);
-    opacity: 1;
-    z-index: 9;
-  }
-  figcaption i {
-    margin-left: 5px;
-    font-size: 15px;
-  }
-  figcaption a.blog-post-title {
-    color: black;
-  }
-  figcaption a.blog-post-title:hover, figcaption a.blog-post-title:focus {
-    color: $txt-secondary;
+    max-width: 100%;
+    object-fit: cover;
+    aspect-ratio: 43/22;
   }
 }
 
@@ -530,17 +349,6 @@ footer {
     margin: 20px;
   }
 }
-
-/* ==========================================================================
-Bootstrap override
-========================================================================== */
-body.modal-open {
-  padding-right:0 !important;
-}
-.modal-body {
-  padding:25px;
-}
-
 
 /*========================================================================
 Dark theme override
