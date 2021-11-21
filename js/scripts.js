@@ -17,18 +17,6 @@ $(document).ready(function () {
         document.getElementById('countdown').innerHTML = copy;
     }
 
-
-    // add to calendar
-    const ical = new datebook.ICalendar({
-        title: 'George and Madeline\'s Wedding',
-        location: 'Prospect Park Boathouse, Brooklyn NY',
-        start: new Date('2022-10-24'),
-    });
-
-    $("#add-to-calendar").on('click', () => {
-        ical.download();
-    });
-
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
@@ -69,7 +57,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 function initMaps() {
   fullWidthMap = new google.maps.Map(document.getElementById("full-width-map"), {
     center: { lat: 40.662502, lng: -73.96976 },
-    zoom: 14,
+    zoom: 13,
     mapId: correctMapId,
     disableDoubleClickZoom: true,
     disableDefaultUI: true,
@@ -93,12 +81,41 @@ function initMaps() {
     gestureHandling: 'cooperative'
   });
 
-  markers.forEach(({name, position, type}) => {
-    new google.maps.Marker({
-        position,
-        map: focusedMap,
-        title: name
-      });
+  let openInfoWindow = null;
+  focusedMap.addListener('click', () => {
+    if (openInfoWindow) {
+        openInfoWindow.close();
+    }
+  });
+
+  // todo: check if map is in scroll view first
+  markers.forEach(({name, position, type}, index) => {
+    window.setTimeout(() => {
+        const marker = new google.maps.Marker({
+            position,
+            map: focusedMap,
+            title: name,
+            animation: google.maps.Animation.DROP
+          });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: name
+        });
+
+        marker.addListener("click", () => {
+            if (openInfoWindow) {
+                openInfoWindow.close();
+            }
+
+            openInfoWindow = infoWindow;
+            infoWindow.open({
+                anchor: marker,
+                map: focusedMap,
+                shouldFocus: false,
+            });
+        });
+
+    }, index * 200);
   });
 }
 

@@ -1,7 +1,6 @@
 // Imports
 //@import "compass";
 @import "partials/typography";
-@import "partials/buttons";
 @import "partials/colors";
 @import "partials/layout";
 @import "partials/subway-icons";
@@ -162,6 +161,10 @@ nav ol {
 }
 
 /* ==========================================================================
+Calendar
+========================================================================== */
+
+/* ==========================================================================
 Accomodations
 ========================================================================== */
 
@@ -209,7 +212,7 @@ Accomodations
   }
 
   #focused-map {
-    height: 600px;
+    height: 500px;
   }
 }
 
