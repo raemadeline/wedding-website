@@ -8,21 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:rampatra/wedding-website.git"
+    "url": "git+ssh://git@github.com:raemadeline/wedding-website.git"
   },
   "keywords": [
-    "wedding",
-    "template",
-    "website template"
+    "wedding"
   ],
-  "author": "Ram Patra",
+  "author": "Madeline Rae Horowitz",
   "license": "GPL-3.0",
-  "homepage": "https://github.com/rampatra/wedding-website",
+  "homepage": "https://github.com/raemadeline/wedding-website",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.2"
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.43.4"
   },
   "dependencies": {
     "animate.css": "^3.7.2",

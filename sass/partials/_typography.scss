@@ -3,9 +3,8 @@
 
 // Fonts
 
-$sans-serif: 'Open Sans', sans-serif;
-$serif: Merriweather, Georgia, 'Times New Roman', serif;
-$accent-font: 'Nunito', sans-serif;
+$sans-serif: 'Cabin', 'Trebuchet MS', Helvetica, sans-serif;
+$serif: 'EB Garamond', Garamond, serif;
 
 // Weights
 
@@ -16,7 +15,6 @@ $bold: 700;
 
 // Sizes
 
-$font-size-h1: 60px;
 $font-size-h2: 40px;
 $font-size-h3: 24px;
 $font-size-h4: 18px;
@@ -24,10 +22,6 @@ $font-size-h5: 15px;
 $font-size-p: 15px;
 $nav-font-size: 13px;
 $blog-post-title: 11px;
-
-// Responsive Sizes
-
-$responsive-h1: 40px;
 
 // Line height
 
@@ -41,27 +35,38 @@ Typography
 p {
   font-size: $font-size-p;
   line-height: $base-line-height;
-  color: $txt-primary;
+  color: black;
   padding-bottom: 20px;
 }
 
+a {
+  color: black;
+}
+
 h1 {
-  font-size: $font-size-h1;
+  font-size: 60px;
+  font-size: clamp(16px, 9vw, 60px);
+  font-family: $serif;
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
 }
 
 h2 {
   font-size: $font-size-h2;
   font-weight: $light;
   color: $h2-color;
+  font-family: $serif;
 }
 
 h3 {
   color: $h3-color;
-  font-size: $font-size-h4;
-  font-weight: $bold;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  line-height: $base-line-height;
+  font-size: clamp(15px, 4vw, 20px);
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: $serif;
+  text-transform: lowercase;
+  letter-spacing: 1px;
 }
 
 h4 {
@@ -73,4 +78,13 @@ h5 {
   color: $h5-color;
   text-transform: uppercase;
   font-weight: $semibold;
+}
+
+/*========================================================================
+Dark theme override
+========================================================================== */
+@media (prefers-color-scheme: dark) {
+  p, h1, h2, h3, h4, h5, a {
+    color: ivory;
+  }
 }

@@ -1,0 +1,110 @@
+[
+  {
+      "featureType": "all",
+      "elementType": "labels.text.fill",
+      "stylers": [
+          {
+              "color": "#006400"
+          }
+      ]
+  },
+  {
+      "featureType": "all",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "all",
+      "elementType": "labels.icon",
+      "stylers": [
+          {
+              "visibility": "off"
+          }
+      ]
+  },
+  {
+      "featureType": "administrative",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "administrative",
+      "elementType": "geometry.stroke",
+      "stylers": [
+          {
+              "color": "#006400"
+          }
+      ]
+  },
+  {
+      "featureType": "landscape",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "poi",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "road",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "road",
+      "elementType": "geometry.stroke",
+      "stylers": [
+          {
+              "color": "#006400"
+          }
+      ]
+  },
+  {
+      "featureType": "transit",
+      "elementType": "all",
+      "stylers": [
+          {
+              "visibility": "off"
+          }
+      ]
+  },
+  {
+      "featureType": "water",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#fffff0"
+          }
+      ]
+  },
+  {
+      "featureType": "water",
+      "elementType": "labels.icon",
+      "stylers": [
+          {
+              "visibility": "off"
+          }
+      ]
+  }
+]
