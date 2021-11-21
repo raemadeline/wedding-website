@@ -4,6 +4,7 @@
 @import "partials/buttons";
 @import "partials/colors";
 @import "partials/layout";
+@import "partials/subway-icons";
 
 /* ==========================================================================
 Global Styles
@@ -45,49 +46,6 @@ section .header {
   padding-bottom: 30px;
 }
 
-.tooltip {
-  position: absolute;
-  z-index: 1070;
-  display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.4;
-  visibility: visible;
-  filter: alpha(opacity=0);
-  opacity: 0;
-}
-.tooltip.in {
-  filter: alpha(opacity=90);
-  opacity: .9;
-}
-.tooltip.top {
-  padding: 5px 0;
-  margin-top: -3px;
-}
-.tooltip.right {
-  padding: 0 5px;
-  margin-left: 3px;
-}
-.tooltip.bottom {
-  padding: 5px 0;
-  margin-top: 3px;
-}
-.tooltip.left {
-  padding: 0 5px;
-  margin-left: -3px;
-}
-.tooltip-inner {
-  max-width: 200px;
-  padding: 3px 8px;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  text-transform: capitalize;
-  background-color: #000;
-  border-radius: 4px;
-}
-
 a {
   text-decoration-skip-ink: auto;
   text-decoration-color: transparent;
@@ -110,6 +68,10 @@ section {
     padding: 0;
     margin: 0;
   }
+}
+
+#full-width-map {
+  height: 400px;
 }
 
 dl {
@@ -165,6 +127,11 @@ dt, dd {
   }
 }
 
+.gm-style-cc,
+.gmnoprint {
+  display: none;
+}
+
 /* ==========================================================================
 Header
 ========================================================================== */
@@ -215,12 +182,16 @@ Accomodations
     }
   }
 
-  li {
+  ol li {
     border: 1px solid green;
   }
 
   p {
     padding: 0;
+  }
+
+  ul {
+    margin-bottom: 20px;
   }
 
   img {
@@ -230,42 +201,21 @@ Accomodations
   }
 }
 
-/* ==========================================================================
-Google map
-========================================================================== */
-#map-canvas {
-  height: 500px;
-  width: 100%;
-}
-#map-content-wrapper {
-  position: relative;
-  margin-top: -502px;
-  margin-bottom: 150px;
-}
-#map-content {
-  margin-top: 40px;
-  padding: 50px 60px;
-  background: #fff;
-  -webkit-transition: opacity 0.5s, visibility 0.6s, margin-top 0.5s;
-  transition: opacity 0.5s, visibility 0.6s, margin-top 0.5s;
-}
-#btn-show-content {
-  padding: 20px;
-  background: #fff;
-  cursor: pointer;
-  display: inline-block;
-  -webkit-transition: opacity 0.5s, visibility 0.6s, margin-top 0.5s;
-  transition: opacity 0.5s, visibility 0.6s, margin-top 0.5s;
-}
-.toggle-map-content {
-  opacity: 0;
-  visibility: hidden;
-}
-.pointer-events-none {
-  pointer-events: none;
-}
-.pointer-events-auto {
-  pointer-events: auto;
+
+#things-to-do {
+  .grid {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-gap: 30px;
+
+    @media screen and (max-width: 675px) {
+      grid-template-columns: auto;
+    }
+  }
+
+  #focused-map {
+    height: 600px;
+  }
 }
 
 /* ==========================================================================
@@ -353,7 +303,18 @@ footer {
 /*========================================================================
 Dark theme override
 ========================================================================== */
+.dark-mode {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
+  .dark-mode {
+    display: block;
+  }
+  .light-mode {
+    display: none;
+  }
+
   body {
     font-family: $sans-serif;
     font-weight: $light;

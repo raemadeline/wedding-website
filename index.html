@@ -102,7 +102,7 @@
 </section>
 
 <section class="full-width">
-    <iframe src="https://snazzymaps.com/embed/354225" width="100%" height="600px" style="border:none;"></iframe>
+    <div id="full-width-map"></div>
 </section>
 
 <section id="travel">
@@ -111,6 +111,12 @@
 
 <section id="accomodations">
     <h2>Accomodations</h2>
+    <p>We recommend staying at one of these three hotels, all of which are conveniently located near the following subway stations:</p>
+    <ul>
+        <li>Hoyt-Schermerhorn Streets <span class="subway-icon mta-blue">A</span> <span class="subway-icon mta-blue">C</span> <span class="subway-icon mta-green-2">G</span></li>
+        <li>Nevins Street <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-green">4</span> <span class="subway-icon mta-green">5</span></li>
+        <li>DeKalb Avenue <span class="subway-icon mta-orange">B</span> <span class="subway-icon mta-orange">D</span> <span class="subway-icon mta-yellow">Q</span> <span class="subway-icon mta-yellow">R</span></li>
+    </ul>
     <ol>
         <li>
             <article>
@@ -141,6 +147,44 @@
 
 <section id="things-to-do">
     <h2>Things to Do</h2>
+    <div class="grid">
+        <ol>
+            <li>
+                <article>
+                    <h3>To Eat</h3>
+                    <ul>
+                        <li>Rucola</li>
+                        <li>Grand Army</li>
+                        <li>Bacchus</li>
+                    </ul>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <h3>To Drink</h3>
+                    <ul>
+                        <li>Coffee Project</li>
+                        <li>Devoción</li>
+                        <li>--</li>
+                        <li>Circa Brewing Company</li>
+                        <li>Sunken Harbor Club</li>
+                        <li></li>
+                    </ul>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <h3>To Entertain</h3>
+                    <ul>
+                        <li>New York Transit Museum</li>
+                        <li>BAM</li>
+                        <li>Alamo Drafthouse</li>
+                    </ul>
+                </article>
+            </li>
+        </ol>
+        <div id="focused-map"></div>
+    </div>
 </section>
 
 <!-- <section class="rsvp text-center" id="rsvp">
@@ -223,7 +267,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 <script src="js/scripts.min.js"></script>
-<!-- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlPw3GQYI3faa_9mRE6plWuM7xNEmrwH0&callback=initMap"></script> -->
-</body>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdanYqSSHwLhnkcWG4gw5JvSQGtxERYu0&callback=initMaps">
+</script>
 </html>
