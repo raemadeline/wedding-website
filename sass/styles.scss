@@ -144,6 +144,7 @@ section {
 
 .button {
   @extend button;
+  text-decoration: none;
 }
 
 /* ==========================================================================
@@ -293,10 +294,9 @@ figure {
   }
 
   img {
-    aspect-ratio: 4 / 5;
+    height: 350px;
+    width: 280px;
     object-fit: cover;
-    max-height: 350px;
-    width: 100%;
   }
 
   p {
@@ -321,6 +321,10 @@ figure {
   @media screen and (max-width: 440px) {
     figure {
       flex-direction: column;
+    }
+
+    img {
+      width: auto;
     }
   }
 }
@@ -352,9 +356,7 @@ figure {
   }
 
   img {
-    max-width: 100%;
-    object-fit: cover;
-    aspect-ratio: 43/22;
+    width: 100%;
   }
 
   @media screen and (min-width: 691px) and (max-width: 1024px) {
@@ -365,6 +367,14 @@ figure {
 }
 
 #travel {
+  dt {
+    padding-top: 20px;
+  }
+
+  dd {
+    padding-top: 5px;
+  }
+
   #penn-station {
     padding-top: 50px;
     margin-top: -50px;
