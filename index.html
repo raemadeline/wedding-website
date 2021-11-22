@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="css/queries.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body id="top">
@@ -44,7 +44,7 @@
 <![endif]-->
 <section class="hero">
     <header>
-        <img src="img/tandem_small_1x.png" srcset="img/tandem_small_1x.png 256w, img/tandem_medium_1x.png 363w, img/tandem_large_1x.png 470w, img/tandem_small_2x.png 512w, img/tandem_medium_2x.png 726w, img/tandem_large_2x.png 940w" alt="" role="presentation" class="logo">
+        <img src="img/tandem_small_1x.png" srcset="img/tandem_small_1x.png 256w, img/tandem_medium_1x.png 363w, img/tandem_large_1x.png 470w, img/tandem_small_2x.png 512w, img/tandem_medium_2x.png 726w, img/tandem_large_2x.png 940w" alt="" role="presentation" onerror="this.style.display='none'" class="logo">
         <h1>George & Madeline</h1>
         <h3>October 23, 2022<br/><span id="countdown"></span></h3>
     </header>
@@ -64,14 +64,28 @@
 <section id="wedding-info">
     <h2>The Wedding</h2>
 
-    <p>We will be getting married at the Prospect Park Boathouse on October 23, 2022.</p>
-    <p>101 East Dr, Brooklyn, NY 11225</p>
+    <div class="grid-section">
+        <article>
+            <p>We will be getting married at the Prospect Park Boathouse on October 23, 2022.</p>
+            <p>101 East Dr, Brooklyn, NY 11225</p>
 
-    <div id="add-to-calendar"></div>
+            <div id="add-to-calendar"></div>
+        </article>
+        <aside>
+            <figure>
+                <img src="img/boathouse-postcard.jpg" onerror="this.parentNode.style.display='none'" alt="A postcard of the Prospect Park Boathouse">
+                <figcaption>fig 1. A postcard of the Prospect Park Boathouse</figcaption>
+            </figure>
+        </aside>
+    </div>
 </section>
 
 <section id="about-us">
     <h2>About Us</h2>
+    <figure>
+        <img src="https://via.placeholder.com/300" onerror="this.parentNode.style.display='none'" alt="A postcard of the Prospect Park Boathouse">
+        <figcaption>fig 2. The happy couple</figcaption>
+    </figure>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus odio orci, nec maximus ipsum tincidunt a. Aliquam finibus metus id elit auctor, ut faucibus massa dignissim. Vivamus ac lacus dictum, feugiat mi facilisis, mattis quam. Praesent egestas tempor urna et dictum. Praesent quam nunc, volutpat vitae sapien id, cursus cursus leo. Cras purus justo, accumsan id lorem et, congue bibendum velit. In egestas dolor at purus porta ullamcorper. Donec sollicitudin et lectus eget venenatis. Duis vehicula, diam vel hendrerit scelerisque, nunc nisi consectetur dolor, eget commodo erat nulla non erat.</p>
 </section>
 
@@ -127,8 +141,9 @@
                 <article>
                     <h3>To Eat</h3>
                     <ul>
-                        <li>Rucola</li>
                         <li>Grand Army</li>
+                        <li>Leyenda</li>
+                        <li>Rucola</li>
                         <li>Bacchus</li>
                     </ul>
                 </article>
@@ -139,7 +154,8 @@
                     <ul>
                         <li>Coffee Project</li>
                         <li>Devoción</li>
-                        <li>--</li>
+                        <li>Blue Bottle Coffee</li>
+                        <li></li>
                         <li>Circa Brewing Company</li>
                         <li>Sunken Harbor Club</li>
                         <li></li>
@@ -153,6 +169,7 @@
                         <li>New York Transit Museum</li>
                         <li>BAM</li>
                         <li>Alamo Drafthouse</li>
+                        <li>Fort Greene Park</li>
                     </ul>
                 </article>
             </li>
@@ -164,20 +181,24 @@
 <section id="q-and-a">
     <h2>Q & A</h2>
     <dl>
-        <dt>What should I wear?</dt>
-        <dd>
-            The dress code is formal, or black tie optional (emphasis on the optional). New York tends to get chilly in October, so you might want to bring a jacket or wrap. We advise against wearing stiletto heels, as they may be unsuitable for walking on the brick floor at the Boathouse.
+        <dt class="double-dt">What should I wear?</dt>
+        <dd class="double-dd">
+            The dress code is formal, or black tie optional (emphasis on the optional). New York tends to get chilly in October, so you might want to bring a jacket or wrap. 
         </dd>
-
-        <dt>What precautions will be taken due to COVID-19?</dt>
         <dd>
-            Event guidelines will be based on current NY State and Local NYC Guidance at the time of the event. Currently, all attendees must be fully vaccinated in order to attend the wedding ceremony and reception. If you are unable to meet these requirements, please let us know as soon as possible. For those who will be attending, please bring proof of vaccination.
-            <br/>
-            Additionally, we recommend that anyone who is attending a large scale event in the 1-2 weeks leading up to the wedding receive a negative PCR test result as an additional precaution.
+            We also advise against wearing stiletto heels, as they may be unsuitable for walking on the brick floor at the Boathouse.
         </dd>
 
         <dt>Do you have a gift registry?</dt>
         <dd>Please know that your presence at our wedding is present enough! However, for friends and family who have been asking for gift ideas, we’ve created an online registry on <a href="https://registry.theknot.com/maddie-horowitz-george-bargoud-october-2022-ny/39396759" target="_blank" rel="noreferrer noopener">The Knot</a>.</dd>
+
+        <dt class="double-dt">What precautions will be taken due to COVID-19?</dt>
+        <dd class="double-dd">
+            Event guidelines will be based on current NY State and Local NYC Guidance at the time of the event. Currently, all attendees must be fully vaccinated in order to attend the wedding ceremony and reception. If you are unable to meet these requirements, please let us know as soon as possible. For those who will be attending, please bring proof of vaccination.
+        </dd>
+        <dd>
+            Additionally, we recommend that anyone who is attending a large scale event in the 1-2 weeks leading up to the wedding receive a negative PCR test result as an additional precaution.
+        </dd>
 
         <dt>Do you have a wedding hashtag?</dt>
         <dd>Absolutely not.</dd>
@@ -259,6 +280,7 @@
 
 <footer>
     <img src="img/tandem_xs_1x.png" srcset="img/tandem_xs_1x.png 120w, img/tandem_xs_2x.png 240w" alt="" role="presentation" class="logo">
+    <button id="back-to-top">back to top</button>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

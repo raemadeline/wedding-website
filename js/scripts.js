@@ -1,3 +1,13 @@
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
 $(document).ready(function () {
 
     // countdown
@@ -49,6 +59,7 @@ $(document).ready(function () {
 
 let fullWidthMap;
 let focusedMap;
+let haveLoadedMarkers = false;
 let correctMapId = '1e81e7338c2717c';
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     correctMapId = 'ed8f84e3fc7b05da';
@@ -70,7 +81,7 @@ function initMaps() {
 
   focusedMap = new google.maps.Map(document.getElementById("focused-map"), {
     center: { lat: 40.688692, lng: -73.984075 },
-    zoom: 16,
+    zoom: 15.5,
     mapId: correctMapId,
     disableDoubleClickZoom: true,
     disableDefaultUI: true,
@@ -81,14 +92,18 @@ function initMaps() {
     gestureHandling: 'cooperative'
   });
 
-  let openInfoWindow = null;
-  focusedMap.addListener('click', () => {
-    if (openInfoWindow) {
-        openInfoWindow.close();
-    }
-  });
+  if ($('#focused-map').isInViewport()) {
+      initMarkers();
+  } else {
+      $(window).scroll(() => {
+          if (!haveLoadedMarkers && $('#focused-map').isInViewport()) {
+              initMarkers();
+          }
+      });
+  }
+}
 
-  // todo: check if map is in scroll view first
+function initMarkers() {
   markers.forEach(({name, position, type}, index) => {
     window.setTimeout(() => {
         const marker = new google.maps.Marker({
@@ -102,22 +117,17 @@ function initMaps() {
             content: name
         });
 
-        marker.addListener("click", () => {
-            if (openInfoWindow) {
-                openInfoWindow.close();
-            }
-
-            openInfoWindow = infoWindow;
-            infoWindow.open({
-                anchor: marker,
-                map: focusedMap,
-                shouldFocus: false,
-            });
-        });
-
+        marker.addListener('mouseover', () => infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false}))
+        marker.addListener('mouseout', () => infoWindow.close())
     }, index * 200);
   });
+
+  haveLoadedMarkers = true;
 }
+
+$('#back-to-top').on('click', () => {
+    $(window).scrollTop(0);
+});
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     correctMapId = e.matches ? "ed8f84e3fc7b05da" : "1e81e7338c2717c";
@@ -189,5 +199,20 @@ const markers = [
         name: 'New York Transit Museum',
         position: { lat: 40.690568558800145, lng: -73.98985656595644 },
         type: 'Entertainment'
+    },
+    {
+        name: 'Fort Greene Park',
+        position: { lat: 40.691696103920556, lng: -73.97532678072841 },
+        type: 'Park'
+    },
+    {
+        name: 'Blue Bottle Coffee',
+        position: { lat: 40.687557477065134, lng: -73.98975447662929},
+        type: 'Coffee'
+    },
+    {
+        name: 'Leyenda',
+        position: { lat: 40.68452465535506, lng: -73.99183620294977 },
+        type: 'Restaurant'
     }
 ];

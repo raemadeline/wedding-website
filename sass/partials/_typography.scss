@@ -3,8 +3,8 @@
 
 // Fonts
 
-$sans-serif: 'Cabin', 'Trebuchet MS', Helvetica, sans-serif;
 $serif: 'EB Garamond', Garamond, serif;
+$mono: 'Fira Code', monospace;
 
 // Weights
 
@@ -29,14 +29,40 @@ $base-line-height: 29px;
 
 // Styles
 
+.italic {
+  font-family: $serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 1px;
+  transition: 200ms ease text-decoration-color;
+}
+
+.underline-on-hover {
+  @extend .underline;
+  text-decoration-color: transparent;
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
 /* ==========================================================================
 Typography
 ========================================================================== */
 p {
   font-size: $font-size-p;
-  line-height: $base-line-height;
+  line-height: 1.6;
   color: black;
   padding-bottom: 20px;
+  max-width: 75ch;
 }
 
 a {
@@ -44,24 +70,21 @@ a {
 }
 
 h1 {
+  @extend .italic;
   font-size: 60px;
   font-size: clamp(16px, 9vw, 60px);
-  font-family: $serif;
   margin: 0;
-  font-weight: 500;
-  font-style: italic;
 }
 
 h2 {
   font-size: $font-size-h2;
-  font-weight: $light;
   color: $h2-color;
   font-family: $serif;
 }
 
 h3 {
   color: $h3-color;
-  font-size: clamp(15px, 4vw, 20px);
+  font-size: 20px;
   line-height: 1.5;
   font-weight: 500;
   font-family: $serif;
@@ -78,6 +101,12 @@ h5 {
   color: $h5-color;
   text-transform: uppercase;
   font-weight: $semibold;
+}
+
+figcaption {
+  @extend .italic;
+
+  font-size: 13px;
 }
 
 /*========================================================================

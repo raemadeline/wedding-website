@@ -13,8 +13,8 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: $sans-serif;
-  font-weight: $light;
+  font-family: $mono;
+  font-weight: 500;
   color: black;
   -webkit-text-size-adjust: 100%;
   background-color: ivory;
@@ -38,26 +38,26 @@ button {
 }
 
 a {
-  text-decoration-skip-ink: auto;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 1px;
-  transition: 200ms ease text-decoration-color;
-
-  &:hover {
-    text-decoration-color: black;
-  }
+  @extend .underline-on-hover;
 }
 
 section {
-  padding: 0 10px;
-  max-width: 75ch;
+  padding: 3vw 10px 4vw;
   margin: 0 auto;
+  max-width: 1000px;
 
   &.full-width {
     max-width: none;
-    padding: 0;
-    margin: 0;
+    padding: 7vw 0 4vw;
+    margin: none;
+  }
+
+  h2 {
+    @extend .underline-on-hover;
+  }
+
+  &:hover h2 {
+    @extend .underline;
   }
 }
 
@@ -75,6 +75,10 @@ dl {
   @media screen and (max-width: 868px) {
     display: block;
     margin-left: 10%;
+
+    .double-dd {
+      padding-bottom: 30px;
+    }
   }
 
   @media screen and (max-width: 675px) {
@@ -84,6 +88,7 @@ dl {
 
 dt {
   @extend h3;
+  @extend .italic;
 
   grid-column-start: 1;
   padding-bottom: 30px;
@@ -95,6 +100,7 @@ dd {
   grid-column-start: 2;
   margin-inline-start: 0;
   padding-left: 40px;
+  padding-bottom: 40px;
   transition: 200ms ease padding;
 
   @media screen and (max-width: 800px) {
@@ -114,6 +120,21 @@ dt, dd {
   }
 }
 
+.double-dt:nth-child(1) {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.double-dt:nth-child(6) {
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+
+.double-dd {
+  border: none;
+  padding-bottom: 0;
+}
+
 dt {
   @media screen and (max-width: 868px) {
     border-bottom: none;
@@ -129,6 +150,10 @@ dt {
 /* ==========================================================================
 Header
 ========================================================================== */
+
+.hero {
+  margin-top: 0;
+}
 
 header {
   width: 100%;
@@ -160,13 +185,79 @@ nav ol {
   }
 }
 
-/* ==========================================================================
-Calendar
-========================================================================== */
+figure {
+  margin: 1em 0;
 
-/* ==========================================================================
-Accomodations
-========================================================================== */
+  img {
+    max-width: 100%;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+}
+
+#wedding-info .grid-section {
+  display: grid;
+  grid-template-columns: auto 450px;
+  grid-gap: 30px;
+
+  figure {
+    margin: 1em 0 1em 2em;
+  }
+
+  @media screen and (max-width: 725px) {
+    grid-template-columns: auto;
+
+    figure {
+      margin: 1em;
+      display: flex;
+    }
+
+    figcaption {
+      text-align: left;
+      padding-left: 1vw;
+    }
+  }
+
+  @media screen and (max-width: 604px) {
+    grid-template-columns: auto;
+
+    figure {
+      display: block;
+    }
+  }
+}
+
+#about-us {
+  figure {
+    float: left;
+    margin: 0 20px 0 0;
+  }
+
+  p {
+    max-width: fit-content;
+  }
+
+  @media screen and (max-width: 515px) {
+    figure {
+      float: none;
+      margin: 1em;
+      display: flex;
+    }
+
+    figcaption {
+      text-align: left;
+      padding-left: 1vw;
+    }
+  }
+
+  @media screen and (max-width: 440px) {
+    figure {
+      flex-direction: column;
+    }
+  }
+}
 
 #accomodations {
   ol {
@@ -181,7 +272,8 @@ Accomodations
   }
 
   ol li {
-    border: 1px solid green;
+    border: 2px solid currentColor;
+    padding: 10px;
   }
 
   p {
@@ -204,16 +296,39 @@ Accomodations
   .grid {
     display: grid;
     grid-template-columns: max-content auto;
-    grid-gap: 30px;
+    grid-gap: 15px;
+
+    @media screen and (max-width: 1064px) {
+      padding-left: 1em;
+    }
 
     @media screen and (max-width: 675px) {
       grid-template-columns: auto;
+
+      #focused-map {
+        width: 100vw;
+        margin-left: -25px;
+      }
     }
   }
 
-  #focused-map {
-    height: 500px;
+  h3, li::marker {
+    @extend .italic;
   }
+
+  #focused-map {
+    min-height: 500px;
+    outline: none;
+  }
+
+  li {
+    font-size: 14px;
+    padding-bottom: 4px;
+  }
+}
+
+.gm-style .gm-style-iw-c {
+  color: black;
 }
 
 /* ==========================================================================
@@ -291,10 +406,21 @@ Footer
 footer {
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   img {
     width: clamp(80px, 30%, 120px);
     margin: 20px;
+  }
+
+  button {
+    @extend .underline-on-hover;
+    @extend .italic;
+
+    border: none;
+    padding: 0 30px 30px 30px;
   }
 }
 
@@ -319,5 +445,9 @@ Dark theme override
 
   dd, dt {
     border-bottom-color: ivory;
+  }
+
+  img:not(.logo) {
+    filter: brightness(.8) contrast(1.2);
   }
 }
