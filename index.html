@@ -34,7 +34,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    	
+	<!-- Map Icons -->
+	<link rel="stylesheet" type="text/css" href="dist/css/map-icons.css">
+	<script type="text/javascript" src="dist/js/map-icons.js"></script>
+
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body id="top">
@@ -42,24 +48,23 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<section class="hero">
-    <header>
-        <img src="img/tandem_small_1x.png" srcset="img/tandem_small_1x.png 256w, img/tandem_medium_1x.png 363w, img/tandem_large_1x.png 470w, img/tandem_small_2x.png 512w, img/tandem_medium_2x.png 726w, img/tandem_large_2x.png 940w" alt="" role="presentation" onerror="this.style.display='none'" class="logo">
-        <h1>George & Madeline</h1>
-        <h3>October 23, 2022<br/><span id="countdown"></span></h3>
-    </header>
+<header>
+    <img src="img/tandem_small_1x.png" srcset="img/tandem_small_1x.png 256w, img/tandem_medium_1x.png 363w, img/tandem_large_1x.png 470w, img/tandem_small_2x.png 512w, img/tandem_medium_2x.png 726w, img/tandem_large_2x.png 940w" alt="" role="presentation" onerror="this.style.display='none'" class="logo">
+    <h1>George & Madeline</h1>
+    <h3>October 23, 2022<br/><span id="countdown"></span></h3>
+</header>
 
-    <nav>
-        <ol>
-            <li><a href="#wedding-info">The Wedding</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#travel">Travel</a></li>
-            <li><a href="#accomodations">Accomodations</a></li>
-            <li><a href="#things-to-do">Things to Do</a></li>
-            <li><a href="#q-and-a">Q & A</a></li>
-        </ol>
-    </nav>
-</section>
+<nav>
+    <button class="mobile"><i class="fas fa-bars"></i>Toggle Menu</button>
+    <ol>
+        <li><a href="#wedding-info">The Wedding</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#accomodations">Accomodations</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#things-to-do">Things to Do</a></li>
+        <li><a href="#q-and-a">Q & A</a></li>
+    </ol>
+</nav>
 
 <section id="wedding-info">
     <h2>The Wedding</h2>
@@ -75,7 +80,7 @@
 
             <p>The venue provides limited parking. We encourage as many of our guests as possible to utilize public transportation.</p>
 
-            <p>The Boathouse is most easily accessed from the <span class="pre"><a href="https://goo.gl/maps/9svd41oxNHi1sY1S9" target="_blank" rel="noopener noreferrer">Prospect Park Station</a> <span class="subway-icon mta-orange">B</span> <span class="subway-icon mta-gray">S</span> <span class="subway-icon mta-yellow">Q</span></span></p>
+            <p>The Boathouse is most easily accessed from the <span class="pre"><a href="https://goo.gl/maps/9svd41oxNHi1sY1S9" target="_blank" rel="noopener noreferrer">Prospect Park Station</a> <span class="subway-icon mta-orange">B</span> <span class="subway-icon mta-yellow">Q</span></span> which also has a shuttle <span class="subway-icon mta-gray">S</span> connected to <span class="pre"><a href="https://goo.gl/maps/3SA5kpCFLLNikyZR7" target="_blank" rel="noopener noreferrer">Botanic Garden Station</a> <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-green">4</span> <span class="subway-icon mta-green">5</span></span> and <span class="pre"><a href="https://goo.gl/maps/wpewQY96GCujxXLa6" target="_blank" rel="noopener noreferrer">Frankin Avenue</a> <span class="subway-icon mta-blue">A</span> <span class="subway-icon mta-blue">C</span></span> </p>
         </article>
         <aside>
             <figure>
@@ -99,8 +104,56 @@
     <div id="full-width-map"></div>
 </section>
 
+<section id="accomodations">
+    <h2>Accomodations</h2>
+    <p>We recommend staying at one of these three hotels, all of which are conveniently located near the following subway stations:</p>
+    <ul>
+        <li><a href="https://goo.gl/maps/VMe3eqLgxwuYWeGCA" target="_blank" rel="noopener noreferrer">Hoyt-Schermerhorn Streets</a> <span class="subway-icon mta-blue">A</span> <span class="subway-icon mta-blue">C</span> <span class="subway-icon mta-green-2">G</span></li>
+        <li><a href="https://goo.gl/maps/b7wxwTsG1Kp58msk9" target="_blank" rel="noopener noreferrer">Nevins Street</a> <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-green">4</span> <span class="subway-icon mta-green">5</span></li>
+        <li><a href="https://goo.gl/maps/DU1LyS2zjWP2tdsQ9" target="_blank" rel="noopener noreferrer">DeKalb Avenue</a> <span class="subway-icon mta-orange">B</span> <span class="subway-icon mta-orange">D</span> <span class="subway-icon mta-yellow">Q</span> <span class="subway-icon mta-yellow">R</span></li>
+    </ul>
+    <ol>
+        <li>
+            <article>
+                <img src="img/ace-hotel-brooklyn-header.jpg" role="presentation" alt="" />
+                <h3><a href="https://acehotel.com/brooklyn/" target="_blank" rel="noreferrer noopener">Ace Hotel Brooklyn</a></h3>
+                <p><a href="https://goo.gl/maps/jnmHSjw9hmqoBxMJA" target="_blank" rel="noopener noreferrer">252 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
+                <p<a href="tel:7183133636">+1 (718) 313-3636</a></p>
+                <p>Discount Code: <strong>CELEBRATE</strong></p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <img src="img/Brooklyn-Hilton.jpg" role="presentation" alt="" />
+                <h3><a href="https://www.hilton.com/en/hotels/nycbshh-hilton-brooklyn-new-york/" target="_blank" rel="noreferrer noopener">Hilton Brooklyn</a></h3>
+                <p><a href="https://goo.gl/maps/kKARYJK4rgSnvRB19" target="_blank" rel="noopener noreferrer">140 Schermerhorn St<br/>Brooklyn, NY 11201</a></p>
+                <p><a href="tel:7188348800">+1 (718) 834-8800</a></p>
+        </li>
+        <li>
+            <article>
+                <img src="img/holiday-inn-brooklyn.jpg" role="presentation" alt="" />
+                <h3><a href="https://www.ihg.com/holidayinn/hotels/us/en/brooklyn/lgabr/hoteldetail" target="_blank" rel="noreferrer noopener">Holiday Inn Brooklyn Downtown</a></h3>
+                <p><a href="https://goo.gl/maps/DDRfFa9NDBLQv4pr8" target="_blank" rel="noopener noreferrer">300 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
+                <p><a href="tel:7186422211">+1 (718) 624-2211</a></p>
+            </article>
+        </li>
+    </ol>
+</section>
+
 <section id="travel">
     <h2>Travel to Brooklyn</h2>
+
+    <h3>directions from major transit hubs</h3>
+    <dl>
+        <dt id="penn-station">Penn Station &rarr; NJ Transit, Newark Airport, and Amtrak</dt>
+        <dd>Take either the <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-blue">A</span> or <span class="subway-icon mta-blue">C</span> trains heading towards Downtown or Brooklyn.</dd>
+        <dd>If you took the <span class="subway-icon mta-red">2</span> or <span class="subway-icon mta-red">3</span> trains, exit at <a href="https://goo.gl/maps/b7wxwTsG1Kp58msk9" target="_blank" rel="noopener noreferrer">Nevins Street</a>.</dd>
+        <dd>If you took the <span class="subway-icon mta-blue">A</span> or <span class="subway-icon mta-blue">C</span> trains, exit at the <a href="https://goo.gl/maps/VMe3eqLgxwuYWeGCA" target="_blank" rel="noopener noreferrer">Hoyt-Schermerhorn Streets</a> Station.</dd>
+        
+        <dt>Grand Central Station &rarr; Metro-North and Amtrak</dt>
+        <dd>Take the <span class="subway-icon mta-green">4</span> or <span class="subway-icon mta-green">5</span> trains heading towards Downtown or Brooklyn.</dd>
+        <dd>Exit at <a href="https://goo.gl/maps/b7wxwTsG1Kp58msk9" target="_blank" rel="noopener noreferrer">Nevins Street.</a></dd>
+    </dl>
 
     <h3>Nearby Airports</h3>
     <dl>
@@ -118,46 +171,8 @@
         <dt>EWR &rarr; Newark Liberty International Airport</dt>
         <dd>Take the AirTrain to the Newark Airport Station.</dd>
         <dd>Take the Northeast Corridor line heading towards New York Penn Station.</dd>
-        <dd>When you reach Penn Station, transfer to either the <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-blue">A</span> or <span class="subway-icon mta-blue">C</span> trains heading towards Downtown or Brooklyn.</dd>
-        <dd>If you took the <span class="subway-icon mta-red">2</span> or <span class="subway-icon mta-red">3</span> trains, exit at <a href="https://goo.gl/maps/b7wxwTsG1Kp58msk9" target="_blank" rel="noopener noreferrer">Nevins Street</a>.</dd>
-        <dd>If you took the <span class="subway-icon mta-blue">A</span> or <span class="subway-icon mta-blue">C</span> trains, exit at the <a href="https://goo.gl/maps/VMe3eqLgxwuYWeGCA" target="_blank" rel="noopener noreferrer">Hoyt-Schermerhorn Streets</a> Station.</dd>
+        <dd>Follow the <a href="#penn-station">Penn Station</a> directions above.</dd>
     </dl>
-</section>
-
-<section id="accomodations">
-    <h2>Accomodations</h2>
-    <p>We recommend staying at one of these three hotels, all of which are conveniently located near the following subway stations:</p>
-    <ul>
-        <li><a href="https://goo.gl/maps/VMe3eqLgxwuYWeGCA" target="_blank" rel="noopener noreferrer">Hoyt-Schermerhorn Streets</a> <span class="subway-icon mta-blue">A</span> <span class="subway-icon mta-blue">C</span> <span class="subway-icon mta-green-2">G</span></li>
-        <li><a href="https://goo.gl/maps/b7wxwTsG1Kp58msk9" target="_blank" rel="noopener noreferrer">Nevins Street</a> <span class="subway-icon mta-red">2</span> <span class="subway-icon mta-red">3</span> <span class="subway-icon mta-green">4</span> <span class="subway-icon mta-green">5</span></li>
-        <li><a href="https://goo.gl/maps/DU1LyS2zjWP2tdsQ9" target="_blank" rel="noopener noreferrer">DeKalb Avenue</a> <span class="subway-icon mta-orange">B</span> <span class="subway-icon mta-orange">D</span> <span class="subway-icon mta-yellow">Q</span> <span class="subway-icon mta-yellow">R</span></li>
-    </ul>
-    <ol>
-        <li>
-            <article>
-                <img src="img/ace-hotel-brooklyn-header.jpg" role="presentation" alt="" />
-                <h3><a href="https://acehotel.com/brooklyn/" target="_blank" rel="noreferrer noopener">Ace Hotel Brooklyn</a></h3>
-                <p><a href="https://goo.gl/maps/jnmHSjw9hmqoBxMJA" target="_blank" rel="noopener noreferrer">252 Schermerhorn St, Brooklyn, NY 11217</a></p>
-                <p>+1 (718) 313-3636</p>
-                <p>Discount Code: <strong>CELEBRATE</strong></p>
-            </article>
-        </li>
-        <li>
-            <article>
-                <img src="img/Brooklyn-Hilton.jpg" role="presentation" alt="" />
-                <h3><a href="https://www.hilton.com/en/hotels/nycbshh-hilton-brooklyn-new-york/" target="_blank" rel="noreferrer noopener">Hilton Brooklyn</a></h3>
-                <p><a href="https://goo.gl/maps/kKARYJK4rgSnvRB19" target="_blank" rel="noopener noreferrer">140 Schermerhorn St, Brooklyn, NY 11201</a></p>
-                <p>+1 (718) 834-8800</p>
-        </li>
-        <li>
-            <article>
-                <img src="img/holiday-inn-brooklyn.jpg" role="presentation" alt="" />
-                <h3><a href="https://www.ihg.com/holidayinn/hotels/us/en/brooklyn/lgabr/hoteldetail" target="_blank" rel="noreferrer noopener">Holiday Inn Brooklyn Downtown</a></h3>
-                <p><a href="https://goo.gl/maps/DDRfFa9NDBLQv4pr8" target="_blank" rel="noopener noreferrer">300 Schermerhorn St, Brooklyn, NY 11217</a></p>
-                <p>+1 (718) 624-2211</p>
-            </article>
-        </li>
-    </ol>
 </section>
 
 <section id="things-to-do">
@@ -181,9 +196,9 @@
                     <ul>
                         <li><a href="https://g.page/coffeeprojectny-fort-greene?share" target="_blank" rel="noopener noreferrer">Coffee Project</a></li>
                         <li><a href="https://g.page/devociondtwnbk?share" target="_blank" rel="noopener noreferrer">Devoción</a></li>
-                        <li><a href=https://goo.gl/maps/TRLYMC6kHrm6hkhq5"" target="_blank" rel="noopener noreferrer">Blue Bottle Coffee</a></li>
+                        <li><a href="https://goo.gl/maps/TRLYMC6kHrm6hkhq5" target="_blank" rel="noopener noreferrer">Blue Bottle Coffee</a></li>
                         <li></li>
-                        <li><a href="https://g.page/circabrewingco?share" target="_blank" rel="noopener noreferrer">Circa Brewing Company</a></li>
+                        <li><a href="https://g.page/circabrewingco?share" target="_blank" rel="noopener noreferrer">Circa Brewing Co.</a></li>
                         <li><a href="https://goo.gl/maps/uhmwwzT14HBL9Te2A" target="_blank" rel="noopener noreferrer">Sunken Harbor Club</a></li>
                     </ul>
                 </article>
@@ -314,6 +329,6 @@
 <script src="https://cdn.jsdelivr.net/npm/datebook"></script>
 <script src="js/scripts.min.js"></script>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdanYqSSHwLhnkcWG4gw5JvSQGtxERYu0&callback=initMaps">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdanYqSSHwLhnkcWG4gw5JvSQGtxERYu0&v=beta&callback=initMaps">
 </script>
 </html>

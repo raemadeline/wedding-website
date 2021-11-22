@@ -9,7 +9,6 @@ $.fn.isInViewport = function() {
 };
 
 $(document).ready(function () {
-
     // countdown
     const wedding = new Date('10/23/2022');
     const today = new Date();
@@ -26,6 +25,44 @@ $(document).ready(function () {
     if (copy) {
         document.getElementById('countdown').innerHTML = copy;
     }
+
+    let originalNavBottom = $('nav').offset().top + $('nav').height();
+
+    $(window).resize(() => {
+        originalNavBottom = $('nav').offset().top + $('nav').height();
+    });
+
+    const $navigationLinks = $('nav > ol > li > a');
+    const $sections = $($("section").get().reverse());
+    
+    let sectionIdTonavigationLink = {};
+    $sections.each( function(){
+        sectionIdTonavigationLink[ $(this).attr('id') ] = $('nav > ol > li > a[href=\\#' + $(this).attr('id') + ']');
+    });
+
+    $(window).scroll(() => {
+        const viewportTop = $(window).scrollTop();
+        const isMobile = $('nav button.mobile').is(':visible')
+        if (viewportTop >= originalNavBottom && !isMobile) {
+            $('nav').addClass('sticky')
+        } else {
+            $('nav').removeClass('sticky')
+        }
+
+        $sections.each(function() {
+            const currentSection = $(this);
+            const sectionTop = currentSection.offset().top;
+    
+            if (viewportTop >= sectionTop - 150) {
+                const $navigationLink = sectionIdTonavigationLink[currentSection.attr('id')];
+                if (!$navigationLink.hasClass('active')) {
+                    $navigationLinks.removeClass('active');
+                    $navigationLink.addClass('active');
+                }
+                return false;
+            }
+        });
+    });
 
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
@@ -55,6 +92,9 @@ $(document).ready(function () {
         }
     });
 
+    $('nav button.mobile').on('click', function() {
+       $('nav').toggleClass('expanded');
+    });
 });
 
 let fullWidthMap;
@@ -76,7 +116,8 @@ function initMaps() {
     mapTypeControl: false,
     zoomControl: false,
     scaleControl: false,
-    gestureHandling: 'cooperative'
+    gestureHandling: 'cooperative',
+    isFractionalZoomEnabled: true
   });
 
   focusedMap = new google.maps.Map(document.getElementById("focused-map"), {
@@ -89,7 +130,8 @@ function initMaps() {
     mapTypeControl: false,
     zoomControl: false,
     scaleControl: false,
-    gestureHandling: 'cooperative'
+    gestureHandling: 'cooperative',
+    isFractionalZoomEnabled: true
   });
 
   if ($('#focused-map').isInViewport()) {
@@ -104,21 +146,44 @@ function initMaps() {
 }
 
 function initMarkers() {
-  markers.forEach(({name, position, type}, index) => {
+  markers.forEach(({name, position: { lat, lng }, type}, index) => {
     window.setTimeout(() => {
-        const marker = new google.maps.Marker({
-            position,
+        const marker = new mapIcons.Marker({
             map: focusedMap,
             title: name,
-            animation: google.maps.Animation.DROP
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(lat, lng),
+            icon: {
+                path: mapIcons.shapes.MAP_PIN,
+                fillColor: '#fffff0',
+                fillOpacity: 1,
+                strokeColor: '#000000',
+                strokeWeight: 1
+            },
+            map_icon_label: `<span class="map-icon map-icon-${type}"></span>`
           });
 
         const infoWindow = new google.maps.InfoWindow({
-            content: name
+            content: name,
+            disableAutoPan: true
         });
 
-        marker.addListener('mouseover', () => infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false}))
-        marker.addListener('mouseout', () => infoWindow.close())
+        const lineElem = $(`#things-to-do a:contains(${name})`);
+        lineElem.on('mouseover', () => {
+            infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
+        });
+        lineElem.on('mouseout', function() {
+            infoWindow.close();
+        });
+
+        marker.addListener('mouseover', () => {
+            lineElem.addClass('marker-highlight');
+            infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
+        })
+        marker.addListener('mouseout', () => {
+            lineElem.removeClass('marker-highlight');
+            infoWindow.close()
+        })
     }, index * 200);
   });
 
@@ -136,83 +201,83 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 
 const markers = [
     {
-        name: 'Ace Hotel Brookyln',
-        position: { lat: 40.687837, lng: -73.983725 },
-        type: 'Hotel'
-    },
-    {
-        name: 'Hilton Brookyln',
-        position: { lat: 40.689587, lng: -73.987997 },
-        type: 'Hotel'
-    },
-    {
-        name: 'Holiday Inn Brooklyn Downtown',
-        position: { lat: 40.687496, lng: -73.982682 },
-        type: 'Hotel'
+        name: 'Sunken Harbor Club',
+        position: { lat: 40.691455273392506, lng: -73.98789318893117 },
+        type: 'night-club'
     },
     {
         name: 'Circa Brewing Co.',
         position: { lat: 40.69168, lng: -73.986182 },
-        type: 'Bar'
-    },
-    {
-        name: 'Sunken Harbor Club',
-        position: { lat: 40.691455273392506, lng: -73.98789318893117 },
-        type: 'Bar'
-    },
-    {
-        name: 'Coffee Project',
-        position: { lat: 40.68843043640514, lng: -73.97934886309937 },
-        type: 'Coffee'
-    },
-    {
-        name: 'Devoción',
-        position: { lat: 40.688557, lng: -73.983459 },
-        type: 'Coffee'
-    },
-    {
-        name: 'Rucola',
-        position: { lat: 40.685611, lng: -73.985892 },
-        type: 'Restaurant'
-    },
-    {
-        name: 'Grand Army',
-        position: { lat: 40.68824, lng: -73.986538},
-        type: 'Restaurant'
-    },
-    {
-        name: 'Bacchus',
-        position: { lat: 40.687124059833096, lng: -73.98424738707784 },
-        type: 'Restaurant'
-    },
-    {
-        name: 'BAM',
-        position: { lat: 40.68615201318827, lng: -73.97780054475035 },
-        type: 'Entertainment'
+        type: 'bar'
     },
     {
         name: 'Alamo Drafthouse',
         position: { lat: 40.69134307854795, lng: -73.98321997543977 },
-        type: 'Entertainment'
-    },
-    {
-        name: 'New York Transit Museum',
-        position: { lat: 40.690568558800145, lng: -73.98985656595644 },
-        type: 'Entertainment'
+        type: 'movie-theater'
     },
     {
         name: 'Fort Greene Park',
         position: { lat: 40.691696103920556, lng: -73.97532678072841 },
-        type: 'Park'
+        type: 'bicycling'
+    },
+    {
+        name: 'New York Transit Museum',
+        position: { lat: 40.690568558800145, lng: -73.98985656595644 },
+        type: 'train-station'
+    },
+    {
+        name: 'Hilton Brookyln',
+        position: { lat: 40.689587, lng: -73.987997 },
+        type: 'lodging'
+    },
+    {
+        name: 'Devoción',
+        position: { lat: 40.688557, lng: -73.983459 },
+        type: 'cafe'
+    },
+    {
+        name: 'Coffee Project',
+        position: { lat: 40.68843043640514, lng: -73.97934886309937 },
+        type: 'cafe'
+    },
+    {
+        name: 'Grand Army',
+        position: { lat: 40.68824, lng: -73.986538},
+        type: 'restaurant'
+    },
+    {
+        name: 'Ace Hotel Brookyln',
+        position: { lat: 40.687837, lng: -73.983725 },
+        type: 'lodging'
+    },
+    {
+        name: 'Holiday Inn Brooklyn Downtown',
+        position: { lat: 40.687496, lng: -73.982682 },
+        type: 'lodging'
     },
     {
         name: 'Blue Bottle Coffee',
         position: { lat: 40.687557477065134, lng: -73.98975447662929},
-        type: 'Coffee'
+        type: 'cafe'
+    },
+    {
+        name: 'Bacchus',
+        position: { lat: 40.687124059833096, lng: -73.98424738707784 },
+        type: 'restaurant'
+    },
+    {
+        name: 'BAM',
+        position: { lat: 40.68615201318827, lng: -73.97780054475035 },
+        type: 'museum'
+    },
+    {
+        name: 'Rucola',
+        position: { lat: 40.685611, lng: -73.985892 },
+        type: 'restaurant'
     },
     {
         name: 'Leyenda',
         position: { lat: 40.68452465535506, lng: -73.99183620294977 },
-        type: 'Restaurant'
+        type: 'restaurant'
     }
 ];

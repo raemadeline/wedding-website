@@ -24,6 +24,7 @@
     "sass": "^1.43.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "font-awesome": "^4.7.0"
   }
 }
