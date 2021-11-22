@@ -45,6 +45,7 @@ section {
   padding: 3vw 10px 4vw;
   margin: 0 auto;
   max-width: 1000px;
+  min-height: 400px;
 
   &.full-width {
     max-width: none;
@@ -147,6 +148,10 @@ dt {
   display: none;
 }
 
+.button {
+  @extend button;
+}
+
 /* ==========================================================================
 Header
 ========================================================================== */
@@ -235,6 +240,13 @@ figure {
     margin: 0 20px 0 0;
   }
 
+  img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    max-height: 350px;
+    width: 100%;
+  }
+
   p {
     max-width: 100%;
   }
@@ -267,7 +279,7 @@ figure {
     grid-gap: 30px;
     grid-gap: min(3vw, 30px);
 
-    @media screen and (max-width: 675px) {
+    @media screen and (max-width: 690px) {
       grid-template-columns: auto;
     }
   }
@@ -282,13 +294,19 @@ figure {
   }
 
   ul {
-    margin-bottom: 20px;
+    margin: 25px 0;
   }
 
   img {
     max-width: 100%;
     object-fit: cover;
     aspect-ratio: 43/22;
+  }
+
+  @media screen and (min-width: 691px) and (max-width: 1024px) {
+    h3 {
+      height: 60px;
+    }
   }
 }
 

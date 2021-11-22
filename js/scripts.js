@@ -68,7 +68,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 function initMaps() {
   fullWidthMap = new google.maps.Map(document.getElementById("full-width-map"), {
     center: { lat: 40.662502, lng: -73.96976 },
-    zoom: 13,
+    zoom: 14,
     mapId: correctMapId,
     disableDoubleClickZoom: true,
     disableDefaultUI: true,
