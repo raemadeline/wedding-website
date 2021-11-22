@@ -145,6 +145,10 @@ section {
 .button {
   @extend button;
   text-decoration: none;
+  display: block;
+  margin-bottom: 30px;
+  max-width: max-content;
+  margin-top: -10px;
 }
 
 /* ==========================================================================
