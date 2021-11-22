@@ -236,7 +236,7 @@ figure {
   }
 
   p {
-    max-width: fit-content;
+    max-width: 100%;
   }
 
   @media screen and (max-width: 515px) {
@@ -264,6 +264,7 @@ figure {
     list-style: none;
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-gap: 30px;
     grid-gap: min(3vw, 30px);
 
     @media screen and (max-width: 675px) {
@@ -411,7 +412,9 @@ footer {
   align-items: center;
 
   img {
-    width: clamp(80px, 30%, 120px);
+    width: 30%;
+    min-width: 80px;
+    max-width: 120px;
     margin: 20px;
   }
 
