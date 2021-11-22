@@ -49,19 +49,21 @@ $(document).ready(function () {
             $('nav').removeClass('sticky')
         }
 
-        $sections.each(function() {
-            const currentSection = $(this);
-            const sectionTop = currentSection.offset().top;
-    
-            if (viewportTop >= sectionTop - 150) {
-                const $navigationLink = sectionIdTonavigationLink[currentSection.attr('id')];
-                if (!$navigationLink.hasClass('active')) {
-                    $navigationLinks.removeClass('active');
-                    $navigationLink.addClass('active');
+        if (!isMobile) {
+            $sections.each(function() {
+                const currentSection = $(this);
+                const sectionTop = currentSection.offset().top;
+        
+                if (viewportTop >= sectionTop - 150) {
+                    const $navigationLink = sectionIdTonavigationLink[currentSection.attr('id')];
+                    if (!$navigationLink.hasClass('active')) {
+                        $navigationLinks.removeClass('active');
+                        $navigationLink.addClass('active');
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }
     });
 
     /********************** RSVP **********************/
@@ -92,8 +94,13 @@ $(document).ready(function () {
         }
     });
 
-    $('nav button.mobile').on('click', function() {
+    $('nav button.mobile').on('click', function(e) {
        $('nav').toggleClass('expanded');
+       e.stopPropagation();
+    });
+
+    $(window).on('click', function() {
+        $('nav').removeClass('expanded');
     });
 });
 
