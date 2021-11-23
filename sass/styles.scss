@@ -53,7 +53,7 @@ section {
   border: 1px solid currentColor;
   border-radius: 5px;
   text-decoration: none;
-  display: block;
+  display: inline-block;
   max-width: max-content;
   transition: 200ms ease background-color;
 
@@ -299,6 +299,10 @@ Sections
 }
 
 #travel {
+  h3 {
+    @extend .italic;
+  }
+
   dt {
     padding-top: 20px;
   }
@@ -308,8 +312,8 @@ Sections
   }
 
   #penn-station {
-    padding-top: 50px;
-    margin-top: -50px;
+    padding-top: 85px;
+    margin-top: -65px;
   }
 }
 
@@ -365,7 +369,7 @@ Sections
   }
 
   .map-icon-label .map-icon {
-    color: white;
+    color: $light-background;
     font-size: 20px;
     transform: translate(0px, -2px);
   }
@@ -542,6 +546,7 @@ footer {
 
     border: none;
     padding: 0 30px 30px 30px;
+    background: transparent;
   }
 }
 
@@ -551,8 +556,8 @@ Dark theme override
 
 @media (prefers-color-scheme: dark) {
   body,
-  .sticky,
   button.mobile,
+  nav.sticky,
   nav.expanded {
     background-color: $dark-background;
     color: $dark-text-color;
@@ -589,5 +594,9 @@ Dark theme override
 
   p, h1, h2, h3, h4, h5, a {
     color: $dark-text-color;
+  }
+
+  #things-to-do .map-icon-label .map-icon {
+    color: $dark-background;
   }
 }
