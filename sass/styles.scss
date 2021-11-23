@@ -1,9 +1,7 @@
 // Imports
-//@import "compass";
-@import "partials/typography";
-@import "partials/colors";
-@import "partials/layout";
 @import "partials/subway-icons";
+@import "partials/colors";
+@import "partials/typography";
 
 /* ==========================================================================
 Global Styles
@@ -12,33 +10,22 @@ Global Styles
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: $mono;
   font-weight: 500;
-  color: black;
+  color: $text-color;
   -webkit-text-size-adjust: 100%;
-  background-color: ivory;
+  background-color: $light-background;
 }
+
 ul, ol {
   margin: 0;
   padding: 0;
 }
+
 ul li {
   list-style: none;
-}
-section .header {
-  padding-bottom: 30px;
-}
-
-button {
-  padding: 5px 7px;
-  background: transparent;
-  border: 1px solid currentColor;
-  border-radius: 5px;
-}
-
-a {
-  @extend .underline-on-hover;
 }
 
 section {
@@ -54,106 +41,25 @@ section {
   }
 }
 
-#full-width-map {
-  height: 400px;
-}
-
-#q-and-a {
-  dl {
-    margin-left: 20%;
-    display: grid;
-    grid-template-columns: 30% auto;
-    grid-row-gap: 30px;
-    transition: 200ms ease margin;
-    
-    @media screen and (max-width: 868px) {
-      display: block;
-      margin-left: 10%;
-
-      .double-dd {
-        padding-bottom: 30px;
-      }
-    }
-
-    @media screen and (max-width: 675px) {
-      margin-left: 0;
-    }
-  }
-
-  dt {
-    @extend h3;
-    @extend .italic;
-
-    grid-column-start: 1;
-    padding-bottom: 30px;
-  }
-
-  dd {
-    @extend p;
-
-    grid-column-start: 2;
-    margin-inline-start: 0;
-    padding-left: 40px;
-    padding-bottom: 40px;
-    transition: 200ms ease padding;
-
-    @media screen and (max-width: 800px) {
-      padding-left: 5vw;
-    }
-
-    @media screen and (max-width: 675px) {
-      padding-left: 0;
-    }
-  }
-
-  dt, dd {
-    border-bottom: 2px solid black;
-
-    &:last-of-type {
-      border-bottom: none;
-    }
-  }
-
-  .double-dt:nth-child(1) {
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-
-  .double-dt:nth-child(6) {
-    grid-row-start: 4;
-    grid-row-end: 6;
-  }
-
-  .double-dd {
-    border: none;
-    padding-bottom: 0;
-  }
-
-  dt {
-    @media screen and (max-width: 868px) {
-      border-bottom: none;
-      padding-top: 30px;
-    }
-  }
-}
-
 .gm-style-cc,
 .gmnoprint {
   display: none;
 }
 
 .button {
-  @extend button;
+  padding: 5px 7px;
+  margin: -10px auto 30px;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 5px;
   text-decoration: none;
   display: block;
-  margin-bottom: 30px;
   max-width: max-content;
-  margin-top: -10px;
   transition: 200ms ease background-color;
 
   &:hover,
   &:active {
-    background-color: rgba(0,0,0,0.1);
+    background-color: $light-shadow;
   }
 }
 
@@ -176,7 +82,6 @@ header {
   }
 }
 
-
 /* ==========================================================================
 Nav
 ========================================================================== */
@@ -186,9 +91,16 @@ nav {
   width: 100%;
   z-index: 10;
 
+  &.sticky {
+    position: fixed;
+    top: 0;
+    background-color: $light-background;
+    box-shadow: 0px 5px 15px 5px $light-shadow;
+  }
+
   .mobile {
     display: none;
-    background: ivory;
+    background: $light-background;
     border: none;
   }
 
@@ -233,10 +145,10 @@ nav {
     }
 
     &.expanded {
-      background-color: ivory;
+      background-color: $light-background;
       width: 100%;
       width: calc(100vw - 30px);
-      box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.1);
+      box-shadow: 0px 5px 15px 5px $light-shadow;
 
       ol {
         display: flex;
@@ -250,11 +162,9 @@ nav {
   }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  background-color: ivory;
-}
+/* ==========================================================================
+Figures and Images
+========================================================================== */
 
 figure {
   margin: 1em 0;
@@ -268,6 +178,10 @@ figure {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+Sections
+========================================================================== */
 
 #wedding-info .grid-section {
   display: grid;
@@ -341,6 +255,10 @@ figure {
       width: auto;
     }
   }
+}
+
+#full-width-map {
+  height: 400px;
 }
 
 #accomodations {
@@ -453,8 +371,83 @@ figure {
   }
 }
 
-.gm-style .gm-style-iw-c {
-  color: black;
+#q-and-a {
+  dl {
+    margin-left: 20%;
+    display: grid;
+    grid-template-columns: 30% auto;
+    grid-row-gap: 30px;
+    transition: 200ms ease margin;
+    
+    @media screen and (max-width: 868px) {
+      display: block;
+      margin-left: 10%;
+
+      .double-dd {
+        padding-bottom: 30px;
+      }
+    }
+
+    @media screen and (max-width: 675px) {
+      margin-left: 0;
+    }
+  }
+
+  dt {
+    @extend h3;
+    @extend .italic;
+
+    grid-column-start: 1;
+    padding-bottom: 30px;
+  }
+
+  dd {
+    @extend p;
+
+    grid-column-start: 2;
+    margin-inline-start: 0;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    transition: 200ms ease padding;
+
+    @media screen and (max-width: 800px) {
+      padding-left: 5vw;
+    }
+
+    @media screen and (max-width: 675px) {
+      padding-left: 0;
+    }
+  }
+
+  dt, dd {
+    border-bottom: 2px solid $text-color;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  .double-dt:nth-child(1) {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .double-dt:nth-child(6) {
+    grid-row-start: 4;
+    grid-row-end: 6;
+  }
+
+  .double-dd {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  dt {
+    @media screen and (max-width: 868px) {
+      border-bottom: none;
+      padding-top: 30px;
+    }
+  }
 }
 
 /* ==========================================================================
@@ -561,16 +554,17 @@ Dark theme override
   .sticky,
   button.mobile,
   nav.expanded {
-    background-color: #121211;
-    color: ivory;
+    background-color: $dark-background;
+    color: $dark-text-color;
   }
 
-  nav.expanded {
-    box-shadow: 0px 5px 15px 5px rgba(255,255,240,0.2);
+  nav.expanded,
+  .sticky {
+    box-shadow: 0px 5px 15px 5px $dark-shadow;
   }
 
   a:hover {
-    text-decoration-color: ivory;
+    text-decoration-color: $dark-text-color;
   }
 
   img.logo {
@@ -581,7 +575,7 @@ Dark theme override
   dd, dt,
   #q-and-a dd,
   #q-and-a dt {
-    border-bottom-color: ivory;
+    border-bottom-color: $dark-text-color;
   }
 
   img:not(.logo) {
@@ -590,6 +584,10 @@ Dark theme override
 
   a.button:hover,
   a.button:active {
-    background-color: lighten(#121211, 10%);
+    background-color: lighten($dark-background, 10%);
+  }
+
+  p, h1, h2, h3, h4, h5, a {
+    color: $dark-text-color;
   }
 }

@@ -60,13 +60,15 @@ Typography
 p {
   font-size: 14px;
   line-height: 1.6;
-  color: black;
+  color: $text-color;
   padding-bottom: 20px;
   max-width: 75ch;
 }
 
 a {
-  color: black;
+  @extend .underline-on-hover;
+
+  color: $text-color;
   font-size: 14px;
 }
 
@@ -83,13 +85,11 @@ h1 {
 
 h2 {
   font-size: $font-size-h2;
-  color: $h2-color;
   font-family: $serif;
 }
 
 h3,
 h3 a {
-  color: $h3-color;
   font-size: 20px;
   line-height: 1.5;
   font-weight: 500;
@@ -104,7 +104,6 @@ h4 {
 
 h5 {
   font-size: $font-size-h5;
-  color: $h5-color;
   text-transform: uppercase;
   font-weight: $semibold;
 }
@@ -121,13 +120,4 @@ figcaption {
 
 .pre {
   white-space: pre;
-}
-
-/*========================================================================
-Dark theme override
-========================================================================== */
-@media (prefers-color-scheme: dark) {
-  p, h1, h2, h3, h4, h5, a {
-    color: ivory;
-  }
 }
