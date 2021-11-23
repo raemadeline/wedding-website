@@ -113,85 +113,80 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 function initMaps() {
-  fullWidthMap = new google.maps.Map(document.getElementById("full-width-map"), {
-    center: { lat: 40.662502, lng: -73.96976 },
-    zoom: 14,
-    mapId: correctMapId,
-    disableDoubleClickZoom: true,
-    disableDefaultUI: true,
-    fullscreenControl: false,
-    mapTypeControl: false,
-    zoomControl: false,
-    scaleControl: false,
-    gestureHandling: 'cooperative',
-    isFractionalZoomEnabled: true
-  });
-
-  focusedMap = new google.maps.Map(document.getElementById("focused-map"), {
-    center: { lat: 40.688692, lng: -73.984075 },
-    zoom: 15.5,
-    mapId: correctMapId,
-    disableDoubleClickZoom: true,
-    disableDefaultUI: true,
-    fullscreenControl: false,
-    mapTypeControl: false,
-    zoomControl: false,
-    scaleControl: false,
-    gestureHandling: 'cooperative',
-    isFractionalZoomEnabled: true
-  });
-
-  if ($('#focused-map').isInViewport()) {
-      initMarkers();
-  } else {
-      $(window).scroll(() => {
-          if (!haveLoadedMarkers && $('#focused-map').isInViewport()) {
-              initMarkers();
-          }
-      });
-  }
+    try {
+        fullWidthMap = new google.maps.Map(document.getElementById("full-width-map"), {
+            center: { lat: 40.662502, lng: -73.96976 },
+            zoom: 14,
+            mapId: correctMapId,
+            disableDoubleClickZoom: true,
+            disableDefaultUI: true,
+            fullscreenControl: false,
+            mapTypeControl: false,
+            zoomControl: false,
+            scaleControl: false,
+            gestureHandling: 'cooperative',
+            isFractionalZoomEnabled: true
+        });
+    
+        focusedMap = new google.maps.Map(document.getElementById("focused-map"), {
+            center: { lat: 40.6877024549926, lng: -73.98270929622757 },
+            zoom: 15.5,
+            mapId: correctMapId,
+            disableDoubleClickZoom: true,
+            disableDefaultUI: true,
+            fullscreenControl: false,
+            mapTypeControl: false,
+            zoomControl: false,
+            scaleControl: false,
+            gestureHandling: 'cooperative',
+            isFractionalZoomEnabled: true
+        });  
+        
+        initMarkers();
+    } catch (error) {
+        console.log(error);
+        $('#focused-map').remove();
+        $('#full-width-map').remove();
+    }
 }
 
 function initMarkers() {
   markers.forEach(({name, position: { lat, lng }, type}, index) => {
-    window.setTimeout(() => {
-        const marker = new mapIcons.Marker({
-            map: focusedMap,
-            title: name,
-            animation: google.maps.Animation.DROP,
-            position: new google.maps.LatLng(lat, lng),
-            icon: {
-                path: mapIcons.shapes.MAP_PIN,
-                fillColor: '#fffff0',
-                fillOpacity: 1,
-                strokeColor: '#000000',
-                strokeWeight: 1
-            },
-            map_icon_label: `<span class="map-icon map-icon-${type}"></span>`
-          });
-
-        const infoWindow = new google.maps.InfoWindow({
-            content: name,
-            disableAutoPan: true
+    const marker = new mapIcons.Marker({
+        map: focusedMap,
+        title: name,
+        position: new google.maps.LatLng(lat, lng),
+        icon: {
+            path: mapIcons.shapes.MAP_PIN,
+            fillColor: '#6c4040',
+            fillOpacity: 1,
+            strokeColor: '#000000',
+            strokeWeight: 0
+        },
+        map_icon_label: `<span class="map-icon map-icon-${type}"></span>`
         });
 
-        const lineElem = $(`#things-to-do a:contains(${name})`);
-        lineElem.on('mouseover', () => {
-            infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
-        });
-        lineElem.on('mouseout', function() {
-            infoWindow.close();
-        });
+    const infoWindow = new google.maps.InfoWindow({
+        content: name,
+        disableAutoPan: true
+    });
 
-        marker.addListener('mouseover', () => {
-            lineElem.addClass('marker-highlight');
-            infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
-        })
-        marker.addListener('mouseout', () => {
-            lineElem.removeClass('marker-highlight');
-            infoWindow.close()
-        })
-    }, index * 200);
+    const lineElem = $(`#things-to-do a:contains(${name})`);
+    lineElem.on('mouseover', () => {
+        infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
+    });
+    lineElem.on('mouseout', function() {
+        infoWindow.close();
+    });
+
+    marker.addListener('mouseover', () => {
+        lineElem.addClass('marker-highlight');
+        infoWindow.open({map: focusedMap, anchor: marker, shouldFocus: false});
+    })
+    marker.addListener('mouseout', () => {
+        lineElem.removeClass('marker-highlight');
+        infoWindow.close()
+    })
   });
 
   haveLoadedMarkers = true;
@@ -238,11 +233,6 @@ const markers = [
         type: 'lodging'
     },
     {
-        name: 'Devoción',
-        position: { lat: 40.688557, lng: -73.983459 },
-        type: 'cafe'
-    },
-    {
         name: 'Coffee Project',
         position: { lat: 40.68843043640514, lng: -73.97934886309937 },
         type: 'cafe'
@@ -268,11 +258,6 @@ const markers = [
         type: 'cafe'
     },
     {
-        name: 'Bacchus',
-        position: { lat: 40.687124059833096, lng: -73.98424738707784 },
-        type: 'restaurant'
-    },
-    {
         name: 'BAM',
         position: { lat: 40.68615201318827, lng: -73.97780054475035 },
         type: 'museum'
@@ -286,5 +271,20 @@ const markers = [
         name: 'Leyenda',
         position: { lat: 40.68452465535506, lng: -73.99183620294977 },
         type: 'restaurant'
+    },
+    {
+        name: 'Barely Disfigured',
+        position: { lat: 40.683174371691926, lng: -73.9928010738658},
+        type: 'night-club'
+    },
+    {
+        name: 'Walter\'s',
+        position: {lat: 40.689946647766426, lng: -73.97322191992978},
+        type: 'restaurant'
+    },
+    {
+        name: 'Barclay\'s Center',
+        position: {lat: 40.68283644963635, lng: -73.97577394272429},
+        type: 'stadium'
     }
 ];

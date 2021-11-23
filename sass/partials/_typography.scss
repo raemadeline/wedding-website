@@ -58,7 +58,7 @@ $base-line-height: 29px;
 Typography
 ========================================================================== */
 p {
-  font-size: $font-size-p;
+  font-size: 14px;
   line-height: 1.6;
   color: black;
   padding-bottom: 20px;
@@ -67,6 +67,11 @@ p {
 
 a {
   color: black;
+  font-size: 14px;
+}
+
+dd, dt {
+  font-size: 14px;
 }
 
 h1 {
@@ -82,7 +87,8 @@ h2 {
   font-family: $serif;
 }
 
-h3 {
+h3,
+h3 a {
   color: $h3-color;
   font-size: 20px;
   line-height: 1.5;
