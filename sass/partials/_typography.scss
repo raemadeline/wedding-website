@@ -3,12 +3,32 @@
 
 // Fonts
 
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/EBGaramond-VariableFont_wght.ttf') format('truetype-variations')
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../fonts/EBGaramond-Italic-VariableFont_wght.ttf') format('truetype-variations')
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/FiraCode-VariableFont_wght.ttf') format('truetype-variations')
+}
+
 $serif: 'EB Garamond', Garamond, serif;
 $mono: 'Fira Code', monospace;
 
 // Weights
 
-$light: 300;
 $normal: 400;
 $semibold: 500;
 
