@@ -101,10 +101,10 @@
             </article>
             <aside>
                 <figure>
-                    <picture onerror="this.parentNode.style.display='none'" alt="A postcard of the Prospect Park Boathouse">
+                    <picture>
                         <source srcset="img/boathouse-postcard.webp" type="image/webp">
                         <source srcset="img/boathouse-postcard.jpg" type="image/jpeg">
-                        <img src="img/boathouse-postcard.jpg">
+                        <img src="img/boathouse-postcard.jpg" alt="A postcard of the Prospect Park Boathouse"  onerror="this.parentNode.style.display='none'">
                     </picture>
                     <figcaption>fig 1. A postcard of the Prospect Park Boathouse</figcaption>
                 </figure>
@@ -115,7 +115,11 @@
     <section id="about-us">
         <h2>About Us</h2>
         <figure>
-            <img src="img/couple.jpg" srcset="img/couple@2x.jpg 2x" onerror="this.parentNode.style.display='none'" alt="The happy couple, circa 2015">
+            <picture>
+                <source srcset="img/couple.webp, img/couple@2x.webp 2x" type="image/webp">
+                <source srcset="img/couple.jpg, img/couple@2x.jpg 2x" type="image/jpeg">
+                <img src="img/couple.jpg" alt="The happy couple, circa 2015" onerror="this.parentNode.style.display='none'">
+            </picture>
             <figcaption>fig 2. The happy couple, circa 2015</figcaption>
         </figure>
         <p>George and Maddie met in 2012 when both were staying on campus at Carnegie Mellon for the summer. Invited by mutual friends, Maddie attended a barbecue at Kappa Sigma (George's fraternity) on the 4th of July. They met while George was grilling kofta on the front porch. They talked a bit and became friends. Over the following winter, Maddie regularly delivered cookies to George at his house as part of her sorority's fundraiser.
@@ -144,7 +148,7 @@
                     <picture>
                         <source srcset="img/ace-hotel-brooklyn-header.webp" type="image/webp">
                         <source srcset="img/ace-hotel-brooklyn-header.jpg" type="image/jpeg">
-                        <img src="img/ace-hotel-brooklyn-header.jpg">
+                        <img src="img/ace-hotel-brooklyn-header.jpg" alt="" role="presentation">
                     </picture>
                     <h3><a href="https://acehotel.com/brooklyn/" target="_blank" rel="noreferrer noopener">Ace Hotel Brooklyn</a></h3>
                     <p><a href="https://goo.gl/maps/jnmHSjw9hmqoBxMJA" target="_blank" rel="noopener noreferrer">252 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
@@ -156,7 +160,7 @@
                     <picture>
                         <source srcset="img/Brooklyn-Hilton.webp" type="image/webp">
                         <source srcset="img/Brooklyn-Hilton.jpg" type="image/jpeg">
-                        <img src="img/Brooklyn-Hilton.jpg">
+                        <img src="img/Brooklyn-Hilton.jpg" alt="" role="presentation">
                     </picture>
                     <h3><a href="https://www.hilton.com/en/hotels/nycbshh-hilton-brooklyn-new-york/" target="_blank" rel="noreferrer noopener">Hilton Brooklyn</a></h3>
                     <p><a href="https://goo.gl/maps/kKARYJK4rgSnvRB19" target="_blank" rel="noopener noreferrer">140 Schermerhorn St<br/>Brooklyn, NY 11201</a></p>
@@ -167,7 +171,7 @@
                     <picture>
                         <source srcset="img/holiday-inn-brooklyn.webp" type="image/webp">
                         <source srcset="img/holiday-inn-brooklyn.jpg" type="image/jpeg">
-                        <img src="img/holiday-inn-brooklyn.jpg">
+                        <img src="img/holiday-inn-brooklyn.jpg" alt="" role="presentation">
                     </picture>
                     <h3><a href="https://www.ihg.com/holidayinn/hotels/us/en/brooklyn/lgabr/hoteldetail" target="_blank" rel="noreferrer noopener">Holiday Inn Brooklyn Downtown</a></h3>
                     <p><a href="https://goo.gl/maps/DDRfFa9NDBLQv4pr8" target="_blank" rel="noopener noreferrer">300 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
@@ -358,7 +362,7 @@
     </section> -->
 
     <footer>
-        <img src="img/tandem_xs_1x.png" srcset="img/tandem_xs_1x.png 120w, img/tandem_xs_2x.png 240w" alt="" role="presentation" class="logo">
+        <img src="img/tandem_xs_1x.png" srcset="img/tandem_xs_1x.png, img/tandem_xs_2x.png 2x" alt="" role="presentation" class="logo">
         <button id="back-to-top">back to top</button>
     </footer>
 
