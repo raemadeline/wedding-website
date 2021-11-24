@@ -17,14 +17,13 @@
     <meta property="og:title" content="George & Maddie getting married">
     <meta property="og:description" content="We would like to invite you to our big day.">
     <meta property="og:type" content="website">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#000000">
     <meta name="msapplication-TileColor" content="#fffff0">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="msapplication-TileImage" content="img/mstile-144x144.png">
     <meta name="theme-color" content="#fffff0">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -39,14 +38,14 @@
     <link
         rel="preload"
         as="image"
-        href="img/tandem_small_1x.png" 
         imagesrcset="img/tandem_small_1x.png 256w,
             img/tandem_medium_1x.png 363w,
             img/tandem_large_1x.png 470w,
             img/tandem_small_2x.png 512w,
             img/tandem_medium_2x.png 726w,
             img/tandem_large_2x.png 940w"
-        />	
+        imagesizes="(min-width: 587px) 470px, 80vw"
+    />
 	<link rel="stylesheet" type="text/css" href="dist/css/map-icons.css">
 	<script type="text/javascript" src="dist/js/map-icons.js"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -61,6 +60,7 @@
                 img/tandem_small_2x.png 512w,
                 img/tandem_medium_2x.png 726w,
                 img/tandem_large_2x.png 940w"
+            sizes="(min-width: 587px) 470px, 80vw"
             alt=""
             role="presentation"
             onerror="this.style.display='none'" 
@@ -101,7 +101,11 @@
             </article>
             <aside>
                 <figure>
-                    <img src="img/boathouse-postcard.jpg" onerror="this.parentNode.style.display='none'" alt="A postcard of the Prospect Park Boathouse">
+                    <picture onerror="this.parentNode.style.display='none'" alt="A postcard of the Prospect Park Boathouse">
+                        <source srcset="img/boathouse-postcard.webp" type="image/webp">
+                        <source srcset="img/boathouse-postcard.jpg" type="image/jpeg">
+                        <img src="img/boathouse-postcard.jpg">
+                    </picture>
                     <figcaption>fig 1. A postcard of the Prospect Park Boathouse</figcaption>
                 </figure>
             </aside>
@@ -137,7 +141,11 @@
         <ol>
             <li>
                 <article>
-                    <img src="img/ace-hotel-brooklyn-header.jpg" role="presentation" alt="" />
+                    <picture>
+                        <source srcset="img/ace-hotel-brooklyn-header.webp" type="image/webp">
+                        <source srcset="img/ace-hotel-brooklyn-header.jpg" type="image/jpeg">
+                        <img src="img/ace-hotel-brooklyn-header.jpg">
+                    </picture>
                     <h3><a href="https://acehotel.com/brooklyn/" target="_blank" rel="noreferrer noopener">Ace Hotel Brooklyn</a></h3>
                     <p><a href="https://goo.gl/maps/jnmHSjw9hmqoBxMJA" target="_blank" rel="noopener noreferrer">252 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
                     <p<a href="tel:7183133636">+1 (718) 313-3636</a></p>
@@ -145,14 +153,22 @@
             </li>
             <li>
                 <article>
-                    <img src="img/Brooklyn-Hilton.jpg" role="presentation" alt="" />
+                    <picture>
+                        <source srcset="img/Brooklyn-Hilton.webp" type="image/webp">
+                        <source srcset="img/Brooklyn-Hilton.jpg" type="image/jpeg">
+                        <img src="img/Brooklyn-Hilton.jpg">
+                    </picture>
                     <h3><a href="https://www.hilton.com/en/hotels/nycbshh-hilton-brooklyn-new-york/" target="_blank" rel="noreferrer noopener">Hilton Brooklyn</a></h3>
                     <p><a href="https://goo.gl/maps/kKARYJK4rgSnvRB19" target="_blank" rel="noopener noreferrer">140 Schermerhorn St<br/>Brooklyn, NY 11201</a></p>
                     <p><a href="tel:7188348800">+1 (718) 834-8800</a></p>
             </li>
             <li>
                 <article>
-                    <img src="img/holiday-inn-brooklyn.jpg" role="presentation" alt="" />
+                    <picture>
+                        <source srcset="img/holiday-inn-brooklyn.webp" type="image/webp">
+                        <source srcset="img/holiday-inn-brooklyn.jpg" type="image/jpeg">
+                        <img src="img/holiday-inn-brooklyn.jpg">
+                    </picture>
                     <h3><a href="https://www.ihg.com/holidayinn/hotels/us/en/brooklyn/lgabr/hoteldetail" target="_blank" rel="noreferrer noopener">Holiday Inn Brooklyn Downtown</a></h3>
                     <p><a href="https://goo.gl/maps/DDRfFa9NDBLQv4pr8" target="_blank" rel="noopener noreferrer">300 Schermerhorn St<br/>Brooklyn, NY 11217</a></p>
                     <p><a href="tel:7186422211">+1 (718) 624-2211</a></p>
