@@ -24,10 +24,15 @@ $(document).ready(function () {
 		copy = 'Tomorrow is the big day!';
 	} else if (days === 0) {
 		copy = 'Today is the big day!';
+
+		const liveStreamLink = document.getElementById('livestream-link')
+		liveStreamLink.innerHTML = 'Watch Ceremony Live'
+		liveStreamLink.style.display = 'block'
 	}
 
 	if (copy) {
 		document.getElementById('countdown').innerHTML = copy;
+		document.getElementById('date').innerHTML = 'October 23, 2022';
 	}
 
 	let originalNavBottom = $('nav').offset().top + $('nav').height();
@@ -70,34 +75,6 @@ $(document).ready(function () {
 		}
 	});
 
-	/********************** RSVP **********************/
-	$('#rsvp-form').on('submit', function (e) {
-		e.preventDefault();
-		var data = $(this).serialize();
-
-		$('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-		if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-			&& MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-			$('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
-		} else {
-			$.post('https://script.google.com/macros/s/AKfycbzUqz44wOat0DiGjRV1gUnRf4HRqlRARWggjvHKWvqniP7eVDG-/exec', data)
-				.done(function (data) {
-					console.log(data);
-					if (data.result === "error") {
-						$('#alert-wrapper').html(alert_markup('danger', data.message));
-					} else {
-						$('#alert-wrapper').html('');
-						$('#rsvp-modal').modal('show');
-					}
-				})
-				.fail(function (data) {
-					console.log(data);
-					$('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
-				});
-		}
-	});
-
 	$('nav button.mobile').on('click', function(e) {
 	   $('nav').toggleClass('expanded');
 	   e.stopPropagation();
@@ -109,6 +86,7 @@ $(document).ready(function () {
 });
 
 let fullWidthMap;
+let afterPartyMap;
 let focusedMap;
 let haveLoadedMarkers = false;
 let correctMapId = '1e81e7338c2717c';
@@ -131,6 +109,21 @@ function initMaps() {
 			gestureHandling: 'cooperative',
 			isFractionalZoomEnabled: true
 		});
+
+		afterPartyMap = new google.maps.Map(document.getElementById("afterparty-map"), {
+			center: { lat: 40.662502, lng: -73.96976 },
+			zoom: 14,
+			mapId: correctMapId,
+			disableDoubleClickZoom: true,
+			disableDefaultUI: true,
+			fullscreenControl: false,
+			mapTypeControl: false,
+			zoomControl: false,
+			scaleControl: false,
+			gestureHandling: 'cooperative',
+			isFractionalZoomEnabled: true
+		});
+	
 	
 		focusedMap = new google.maps.Map(document.getElementById("focused-map"), {
 			center: { lat: 40.6877024549926, lng: -73.98270929622757 },
